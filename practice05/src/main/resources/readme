@@ -1,0 +1,21 @@
+시설물예약관리시스템 Web
+목적: 시설물을 등록하고, 해당 시설물의 예약일정을 관리하기 위한 시스템입니다.
+
+기능: 1.시설물 등록 2.시설물예약확인 3.시설물예약등록 4.시설물예약취소 5.시설물예약관리
+
+M
+User(Entity)
+Facility(Entity)
+Reservation(Entity)
+Notice(Entity)
+Feedback(Entity)
+
+V
+FacilityView.html
+FacilityRegister
+Facility
+
+C
+UserController
+ReserveController
+FacilityController

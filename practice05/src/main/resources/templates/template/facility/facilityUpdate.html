@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,width=device-width" />
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<title>시설물 수정</title>
+</head>
+<body>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<!-- 네비게이션 바 -->
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">시설물예약관리시스템</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<div class="navbar-nav">
+				<a class="nav-link" href="#">Home</a>
+				<a class="nav-link" href="#">Facility</a>
+				<a class="nav-link" href="#">Reservation</a>
+				<a class="nav-link" href="#">User</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="jumbotron bg-secondary">
+		<div class="container">
+			<h1 class="display-3">시설물 정보수정</h1>
+		</div>
+	</div>
+<!-- 시설물 수정 폼 -->
+<div class="container">
+	<form th:object="${facilityUpdateDTO}" th:action="@{/facility/update/{idx}(idx=*{idx})}" method="post">
+		<div class="mb-3">
+			<label for="inputName" class="form-label">시설물명</label>
+			<input type="text" class="form-control" name="name" id="inputName" th:value="*{name}">
+		</div>
+		<div class="mb-3">
+			<label for="inputPhone" class="form-label">시설물 전화번호</label>
+			<input type="text" class="form-control" name="phone" id="inputPhone" th:value="*{phone}">
+		</div>
+		<div class="mb-3">
+			<label for="inputAddress" class="form-label">시설물 주소</label>
+			<textarea class="form-control" name="address" id="inputAddress" rows="1" th:text="*{address}"></textarea>
+		</div>
+		<div class="mb-3">
+			<label for="inputContent" class="form-label">시설물 소개내용</label>
+			<textarea class="form-control" name="content" id="inputContent" rows="3" th:text="*{content}"></textarea>
+		</div>		
+		<button type="submit" class="btn btn-primary">제출</button>
+	</form>
+</div>
+<!-- 하단부 -->
+<footer class="container">
+	<hr>
+	<p>&copy;시설예약관리시스템<p>
+</footer>
+</body>
+</html>

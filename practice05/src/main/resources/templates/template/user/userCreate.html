@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0,width=device-width" />
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<title>사용자 등록</title>
+</head>
+<body>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<!-- 네비게이션 바 -->
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">시설물예약관리시스템</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<div class="navbar-nav">
+				<a class="nav-link" href="#">Home</a>
+				<a class="nav-link" href="#">Facility</a>
+				<a class="nav-link" href="#">Reservation</a>
+				<a class="nav-link" href="#">User</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="jumbotron bg-secondary">
+		<div class="container">
+			<h1 class="display-3">사용자 입력</h1>
+		</div>
+	</div>
+<!-- 사용자 입력 폼 -->
+<div class="container">
+	<form action="/user/userCreate.do" method="post">
+		<div class="mb-3">
+			<label for="inputId" class="form-label">아이디</label>
+			<input type="text" class="form-control" name="id" id="inputId">
+		</div>
+		<div class="mb-3">
+			<label for="inputPw" class="form-label">비밀번호</label>
+			<input type="password" class="form-control" name="pw" id="inputPW">
+		</div>
+		<div class="mb-3">
+			<label for="inputName" class="form-label">성명</label>
+			<input type="text" class="form-control" name="name" id="inputName">
+		</div>
+		<div class="mb-3">
+			<label for="inputEmail" class="form-label">이메일</label>
+			<input type="email" class="form-control" name="email" id="inputEmail">
+		</div>
+		<div class="mb-3">
+			<label for="inputPhone" class="form-label">전화번호</label>
+			<input type="text" class="form-control" name="phone" id="inputPhone">
+		</div>
+		<div class="mb-3">
+			<label for="inputBirthdate" class="form-label">생년월일</label>
+			<input type="text" class="form-control" name="birthdate" id="inputBirthdate">
+		</div>
+		<div class="mb-3">
+			<label for="inputGender" class="form-label">성별</label>
+			<div class="form-check">
+			<input type="radio" class="form-check-input" name="gender" id="inputGender1" value="남자">
+			<label class="form-check-label" for="inputGender1">남자</label>
+			</div>
+			<div class="form-check">
+			<input type="radio" class="form-check-input" name="gender" id="inputGender2" value="여자">
+			<label class="form-check-label" for="inputGender1" >여자</label>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">제출</button>
+	</form>
+</div>
+<!-- 하단부 -->
+<footer class="container">
+	<hr>
+	<p>&copy;시설예약관리시스템<p>
+</footer>
+</body>
+</html>
