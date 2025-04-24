@@ -17,10 +17,10 @@
 <!-- Bootstrap JS -->
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/user.js"></script>
-<!-- Header -->
+<!-- Header 
 <header class="container-fluid bg-info py-2 text-center">
 <span>Header</span>
-</header>
+</header> !-->
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
 	<div class="container-fluid">
@@ -30,10 +30,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<div class="navbar-nav">
-				<a class="nav-link" href="#">Home</a>
-				<a class="nav-link" href="#">Facility</a>
+				<a class="nav-link" th:href="@{/user/userList.do}">Home</a>
+				<a class="nav-link" th:href="@{/facility/list}">Facility</a>
 				<a class="nav-link" href="#">Reservation</a>
-				<a class="nav-link" href="#">User</a>
+				<a class="nav-link" th:href="@{/user/userList.do}">User</a>
 			</div>
 		</div>
 	</div>
