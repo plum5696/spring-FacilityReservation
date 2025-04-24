@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Insert title here</title>
+	<!--  Bootstrap CSS -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+	<!-- My CSS -->
+</head>
+<body>
+	<header style="background:lightblue; line-height:100px">Header</header>
+	<nav style="background:orange; line-height:50px">Navbar</nav>
+	<main style="background:#f0f0f0; line-height:300px">
+	<th:block layout:fragment="testFragment"></th:block>
+	</main>
+	<footer style="background:gray; line-height:100px">Footer</footer>
+
+</body>
+</html>
