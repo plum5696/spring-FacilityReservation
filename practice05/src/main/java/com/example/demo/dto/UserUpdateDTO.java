@@ -26,7 +26,7 @@ public class UserUpdateDTO {
 		this.idx = user.getIdx();
 		this.id =user.getId();
 		this.pw =user.getPw();
-		this.name = user.getEmail();
+		this.name = user.getName();
 		this.email = user.getEmail();
 		this.gender = user.getGender();
 		this.phone = user.getPhone();

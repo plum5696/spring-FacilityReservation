@@ -84,6 +84,11 @@ public class UserController {
 		return "redirect:/user/userList.do";
 	}
 	
+	@GetMapping("/test")
+	public String test() {
+		return "template/test";
+	}
+	
 	//예외처리
 	@ExceptionHandler(UserException.class)
 	public ModelAndView handleError(HttpServletRequest req, UserException exception) {
