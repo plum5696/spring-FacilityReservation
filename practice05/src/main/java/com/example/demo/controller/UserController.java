@@ -37,8 +37,15 @@ public class UserController {
 	
 	//사용자 등록처리	
 	@PostMapping("/user/userCreate.do")
-	public String userInsert(UserCreateDTO userCreateDTO) {
-		userService.save(userCreateDTO);
+	public String userInsert(UserCreateDTO userCreateDTO,Model model) {
+		//ID중복체크
+		boolean IdCheckRes=userService.checkIdDuplication(userCreateDTO.getId());
+		System.out.println(IdCheckRes);
+		if(IdCheckRes==true) {
+			model.addAttribute("msg","ID 중복 에러: 입력하신 ID는 이미 존재합니다.");
+			return "template/layout/layout_error";
+		}
+		userService.save(userCreateDTO); //DB에 저장
 		return "redirect:/user/userList.do";
 	}
 	

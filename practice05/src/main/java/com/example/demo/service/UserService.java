@@ -57,4 +57,10 @@ public class UserService {
 		User user = this.userRepository.findById(idx).orElseThrow();
 		this.userRepository.delete(user); //삭제처리
 	}
+
+	//ID중복 체크
+	public boolean checkIdDuplication(String id) {
+		boolean IdCheckValue= this.userRepository.existsById(id);
+		return IdCheckValue;
+	}
 }
