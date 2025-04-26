@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.nz.net/thymeleaf.layout"
+	layout:decorate="~{template/layout/layout_user}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<th:block layout:fragment="contents">
+<!-- Title -->
+	<div class="container mt-5"> 
+		<h4 class="text-center">사용자 삭제</h4>
+	</div>
+<!-- Form -->
+	<div class="container myPaging mb-5">
+	<form th:action="@{|/user/userDelete.do/${idx}|}" method="POST" autocomplete="off">
+	<div class="mb-3">
+			<label for="inputPw" class="form-label">비밀번호</label>
+			<input type="password" class="form-control" name="pw" id="inputPW" 
+			placeholder="회원가입시 비밀번호를 입력해주세요" required>
+	</div>
+	<button type="button" class="btn btn-secondary" onclick="history.back();return false;">뒤로가기</button>
+		&nbsp;&nbsp;<button type="submit" class="btn btn-primary">제출</button>
+	</form>
+	</div>
+</th:block>
+
+</body>
+</html>
