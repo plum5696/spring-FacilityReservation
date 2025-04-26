@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.UserCreateDTO;
@@ -14,6 +16,7 @@ import com.example.demo.entity.User;
 import com.example.demo.entity.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+
 
 @RequiredArgsConstructor
 @Service
@@ -62,6 +65,18 @@ public class UserService {
 			return "/user/userList.do";
 		}
 		
+	}
+	
+	//사용자검색
+	public Page<User> searchList(String keyword, int page) {
+		if(page==0) {
+			page=0; 
+		}else {
+			page-=1;//기본페이지는 0부터 시작하기에 -1
+		}
+		Sort sort =Sort.by(Order.desc("idx"));
+		Pageable pageable = PageRequest.of(page, 10,sort); //페이지당 유저수
+		return userRepository.findByNameContaining(keyword,pageable);
 	}
 
 	//ID중복 체크

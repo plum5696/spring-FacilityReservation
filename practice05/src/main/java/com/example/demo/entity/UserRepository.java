@@ -7,9 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserRepository extends JpaRepository<User,Integer> {
 
 	//List
-	Page<User> findAll(Pageable pageable); 
+	public Page<User> findAll(Pageable pageable); 
 		
 	//ID check
 	boolean existsById(String id);
+	
+	//Serach
+	public Page<User> findByNameContaining(String keyword,Pageable pageable);
 
+	
 }

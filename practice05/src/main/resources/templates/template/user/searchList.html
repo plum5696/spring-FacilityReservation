@@ -6,16 +6,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="initial-scale=1.0,width=device-width" />
 
-<title>사용자 목록</title>
+<title>사용자 검색</title>
 </head>
 
 <body>
-<!-- 타이틀 -->
 <th:block layout:fragment="contents">
 
 <div class="jumbotron bg-secondary">
 		<div class="container">
-			<h1 class="display-3">사용자 목록</h1>
+		<h1 class="display-3">사용자 검색</h1>
 		</div>
 	</div>
 <!-- 사용자리스트 테이블 -->
@@ -60,7 +59,7 @@
 	<li class="page-item" th:each="page:${#numbers.sequence(1,userList.totalPages)}"
 	th:if="${page>=cPage-3 and page<=cPage+3}"
 	th:classappend="${page==cPage}?'active'">
-	<a class="page-link" th:href="@{|?page=${page}|}" th:text="${page}"></a>
+	<a class="page-link" th:href="@{|?page=${page}&keyword=${keyword}|}" th:text="${page}"></a>
 	
 	</li>
 	<!-- 다음페이지 -->

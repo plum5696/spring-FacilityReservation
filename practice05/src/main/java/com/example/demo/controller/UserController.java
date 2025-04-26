@@ -104,6 +104,14 @@ public class UserController {
 		this.userService.update(userUpdateDTO);
 		return "redirect:/user/userList.do";
 	}
+	//사용자 검색
+	@GetMapping("/user/search")
+	public String searchList(Model model, @RequestParam("keyword") String keyword,@RequestParam(value="page",defaultValue="0")int page) {
+		Page<User> userList = this.userService.searchList(keyword, page); // Service 객체의 searchList() 호출
+		model.addAttribute("keyword",keyword); //검색키워드
+		model.addAttribute("userList",userList);
+		return "template/user/searchList";
+	}
 	
 	@GetMapping("/test")
 	public String test() {
