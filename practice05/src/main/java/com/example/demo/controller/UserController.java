@@ -77,11 +77,25 @@ public class UserController {
 	}
 	
 	//사용자 삭제처리
-	@GetMapping("/user/userDelete.do/{idx}")
-	public String userDelete(@PathVariable("idx") Integer idx) {
-		this.userService.delete(idx); //사용자 삭제
+	@PostMapping("/user/userDelete.do/{idx}")
+	public String userDelete(@PathVariable("idx") int idx,@RequestParam("pw") String userPw) {
+		String res = this.userService.delete(idx,userPw); //사용자 삭제
 		
-		return "redirect:/user/userList.do";
+		return "redirect:"+res;
+	}
+	//사용자 삭제 Ui
+	@GetMapping("/user/userDelete.do/{idx}")
+	public String userDeleteUi(@PathVariable("idx") Integer idx, Model model) {
+		//Model에 idx 적용
+		model.addAttribute("idx",idx);
+		
+		return "template/user/userDelete.html";
+	}
+	//삭제 실패시
+	@GetMapping("/user/delete-fail/{idx}")
+	public String deleteFail(Model model,@PathVariable("idx") Integer idx) {
+		model.addAttribute("idx",idx);
+		return "template/user/delete-fail";
 	}
 	
 	//사용자 수정 처리

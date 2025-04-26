@@ -53,9 +53,15 @@ public class UserService {
 	}
 	
 	//사용자삭제
-	public void delete(Integer idx) throws NoSuchElementException{
+	public String delete(int idx,String userPw) throws NoSuchElementException{
 		User user = this.userRepository.findById(idx).orElseThrow();
-		this.userRepository.delete(user); //삭제처리
+		if(!userPw.equals(user.getPw())) { //비밀번호 불일치 시
+			return "/user/delete-fail/"+idx;
+		}else {
+			this.userRepository.delete(user); //삭제처리
+			return "/user/userList.do";
+		}
+		
 	}
 
 	//ID중복 체크
