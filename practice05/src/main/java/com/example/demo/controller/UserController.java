@@ -7,13 +7,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dto.UserCreateDTO;
@@ -59,6 +58,7 @@ public class UserController {
 		return "template/user/userList.html";
 	}
 	
+	
 	//사용자정보 수정 페이지
 	@GetMapping("/user/userUpdate.do/{idx}")
 	public ModelAndView userUpdateUi(@PathVariable("idx") Integer idx){
@@ -75,14 +75,21 @@ public class UserController {
 		}
 		return mav;
 	}
-	
-	//사용자 삭제처리
-	@PostMapping("/user/userDelete.do/{idx}")
-	public String userDelete(@PathVariable("idx") int idx,@RequestParam("pw") String userPw) {
-		String res = this.userService.delete(idx,userPw); //사용자 삭제
-		
+	//사용자 수정 처리
+	@PostMapping("/user/userUpdate.do/{idx}")
+	public String UserUpdate(UserUpdateDTO userUpdateDTO,@RequestParam("newPw") String newPw) {
+		//this.userService.changeNewUserPw(userUpdateDTO, newPw);	
+		String res =this.userService.update(userUpdateDTO,newPw);
 		return "redirect:"+res;
 	}
+	
+	//수정 실패시
+	@GetMapping("/user/update-fail/{idx}")
+	public String updateFail(Model model,@PathVariable("idx") Integer idx) {
+		model.addAttribute("idx",idx);
+		return "template/user/update-fail";
+	}
+	
 	//사용자 삭제 Ui
 	@GetMapping("/user/userDelete.do/{idx}")
 	public String userDeleteUi(@PathVariable("idx") Integer idx, Model model) {
@@ -91,6 +98,16 @@ public class UserController {
 		
 		return "template/user/userDelete.html";
 	}
+	
+	
+	//사용자 삭제처리
+	@PostMapping("/user/userDelete.do/{idx}")
+	public String userDelete(@PathVariable("idx") int idx,@RequestParam("pw") String userPw) {
+		String res = this.userService.delete(idx,userPw); //사용자 삭제
+		
+		return "redirect:"+res;
+	}
+
 	//삭제 실패시
 	@GetMapping("/user/delete-fail/{idx}")
 	public String deleteFail(Model model,@PathVariable("idx") Integer idx) {
@@ -98,12 +115,7 @@ public class UserController {
 		return "template/user/delete-fail";
 	}
 	
-	//사용자 수정 처리
-	@PostMapping("/user/userUpdate.do/{idx}")
-	public String UserUpdate(UserUpdateDTO userUpdateDTO) {		
-		this.userService.update(userUpdateDTO);
-		return "redirect:/user/userList.do";
-	}
+
 	//사용자 검색
 	@GetMapping("/user/search")
 	public String searchList(Model model, @RequestParam("keyword") String keyword,@RequestParam(value="page",defaultValue="0")int page) {

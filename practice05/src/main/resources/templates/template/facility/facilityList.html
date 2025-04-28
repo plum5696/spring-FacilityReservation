@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.nz.net/thymeleaf/layout"
+	  layout:decorate="~{template/layout/layout_facility}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="initial-scale=1.0,width=device-width" />
@@ -8,33 +10,15 @@
 <title>Facility List</title>
 </head>
 <body>
-<script src="/js/bootstrap.bundle.min.js"></script>
----Facility List--- 
-<!-- 네비게이션 바 -->
-<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="#">시설물예약관리시스템</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<div class="navbar-nav">
-				<a class="nav-link" href="#">Home</a>
-				<a class="nav-link" href="#">Facility</a>
-				<a class="nav-link" href="#">Reservation</a>
-				<a class="nav-link" href="#">User</a>
-			</div>
-		</div>
-	</div>
-</nav>
-
+<th:block layout:fragment="contents">
 <div class="jumbotron bg-secondary">
 		<div class="container">
-			<h1 class="display-3">사용자 목록</h1>
+			<h1 class="display-3">시설 목록</h1>
 		</div>
 </div>
 <!-- 시설물 리스트 -->
 <div class="container">
+<div class="table-responsive">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -57,10 +41,11 @@
 		</tr>
 	</tbody>
 	</table>
+	</div>
 	<hr>
 </div>
 <!-- 페이지네이션 -->
-	<div class="container">
+	<div class="container mypaging mb-5">
 		<ul class="pagination justify-content-center">
 			<th:block th:with="cPage=${facilityList.number+1}">
 			<!-- 이전페이지 -->
@@ -87,10 +72,6 @@
 		등록
 		</button>
 	</div>
-<!-- 하단부 -->
-<footer class="container">
-	<hr>
-	<p>&copy;시설물예약관리시스템</p>
-</footer>
+</th:block>
 </body>
 </html>

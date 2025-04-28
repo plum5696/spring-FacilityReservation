@@ -24,8 +24,16 @@
 			<input type="text" class="form-control" name="id" th:value="*{id}" id="inputId">
 		</div>
 		<div class="mb-3">
-			<label for="inputPw" class="form-label">비밀번호</label>
-			<input type="password" class="form-control" name="pw" th:value="*{pw}" id="inputPW">
+			<label for="inputPw" class="form-label">현 비밀번호</label>
+			<input type="password" class="form-control" name="pw" id="inputPW">
+		</div>
+		<div class="mb-3">
+			<label for="inputPw" class="form-label">새 비밀번호</label>
+			<input type="password" class="form-control" name="newPw" id="inputPW">
+		</div>
+		<div class="mb-3">
+			<label for="inputPw" class="form-label">새 비밀번호 확인</label>
+			<input type="password" class="form-control" name="newPwConfirm" id="inputPW">
 		</div>
 		<div class="mb-3">
 			<label for="inputName" class="form-label">성명</label>

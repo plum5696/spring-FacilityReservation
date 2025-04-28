@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -58,6 +60,7 @@ public class User {
 		this.phone = phone;
 		this.birthdate = birthdate;
 	}
+	
 	
 
 	
