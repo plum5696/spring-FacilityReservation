@@ -1,0 +1,6 @@
+@charset "UTF-8";
+.mypaging ul li{padding:5px;}
+.mypaging ul li:first-child a {border-radius: 20px !important; margin-right:25px;}
+/*.mypaging ul li:nth-child(2) a{border-radius: 20px; margin-right: 25px;}*/
+.mypaging ul li:last-child a {border-radius: 20px !important; margin-left:25px !important;}
+/*.mypaging ul li:nth-last-child(2) a{border-radius: 20px; margin-left: 25px !important;} */
