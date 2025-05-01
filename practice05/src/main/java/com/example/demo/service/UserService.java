@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.data.domain.Page;
@@ -138,5 +139,13 @@ public class UserService {
 			System.out.println(userUpdateDTO+" , "+newPw);
 			userUpdateDTO.setPw(newPw); // 새 비밀번호로 변경
 		}
+	}
+	//로그인::getLoginUserById
+	public User getLoginUserById(String id) {
+		if(id==null)
+			return null;
+		Optional<User> optionalUser= userRepository.findById(id);
+		if(optionalUser.isEmpty()) return null;
+		return optionalUser.get();
 	}
 }

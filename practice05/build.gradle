@@ -34,6 +34,9 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.3m'
+	implementation 'com.oracle.database.jdbc:ojdbc8:19.3.0.0'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
 }
 
 tasks.named('test') {
