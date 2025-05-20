@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.example.demo.dto.LoginRequest;
 import com.example.demo.dto.UserCreateDTO;
 import com.example.demo.dto.UserUpdateDTO;
 import com.example.demo.entity.User;
@@ -147,5 +148,21 @@ public class UserService {
 		Optional<User> optionalUser= userRepository.findById(id);
 		if(optionalUser.isEmpty()) return null;
 		return optionalUser.get();
+	}
+	
+	//로그인::login
+	public User login(LoginRequest loginRequest) {
+		Optional<User> optionalUser = userRepository.findById(loginRequest.getId());
+		if(optionalUser.isEmpty()) { //해당하는 회원ID가 없으면 null 반환
+		return null;
+		}
+		
+		User user =optionalUser.get();
+		
+		if(!BCrypt.checkpw(loginRequest.getPw(), user.getPw())) {
+			return null; //패스워드 불일치시 null 반환
+		}
+		
+		return user;
 	}
 }
