@@ -71,6 +71,7 @@ public class LoginController {
 		//로그인 성공시 쿠키생성
 		Cookie cookie=new Cookie("userId",String.valueOf(user.getId()));
 		cookie.setMaxAge(120); //쿠키 만료시간(초단위) 설정 
+		cookie.setPath("/");//쿠키경로 전체설정
 		
 		response.addCookie(cookie);
 		return "redirect:/cookie";

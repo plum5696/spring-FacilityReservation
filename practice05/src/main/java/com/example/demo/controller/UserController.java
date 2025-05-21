@@ -65,7 +65,7 @@ public class UserController {
 		}
 		Page<User> userList = this.userService.userList(page);
 		model.addAttribute("userList", userList); //model 객체로 userList 전달
-		
+	
 		return "template/user/userList.html";
 	}
 	
